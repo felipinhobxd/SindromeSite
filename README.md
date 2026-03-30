@@ -1,30 +1,42 @@
-# 🎮 Sindrome Games - Login System
+# 🎮 Sindrome Games - Central de Links
 
-Este é um projeto de interface de **Login e Registro** desenvolvido com uma estética Gamer Minimalista (Cinematic Dark Mode). 
+Este repositório contém o código de uma página de links (estilo **Linktree Premium**) exclusiva para o canal **Sindrome Games**. 
 
-O site foi criado para servir como um portal de entrada temático que, após a autenticação, redireciona o usuário diretamente para o canal oficial da **Sindrome Games** no YouTube.
-
----
-
-## 🚀 Funcionalidades
-
-- **Design Premium:** Estética monocromática em tons de preto e branco com efeitos de Glassmorphism.
-- **Sistema de Auth Simulado:** Cadastro e login utilizando o `localStorage` do navegador para persistência de dados.
-- **Navegação Fluida:** Transições suaves entre as telas de Login e Registro via JavaScript.
-- **Redirecionamento Automático:** Após o login bem-sucedido, o usuário é encaminhado para o canal.
+O objetivo do projeto é reunir em um único lugar, com estética Gamer Minimalista, todos os acessos oficiais para acompanhar os **Longplays** e conteúdos do canal em diferentes plataformas.
 
 ---
 
-## 🔗 Link do Canal
-Acesse o conteúdo oficial em:
-👉 [youtube.com/@SindromeGames](https://www.youtube.com/@SindromeGames)
+## ✨ Diferenciais do Projeto
+
+Ao contrário de agregadores de links comuns, este site foi desenvolvido do zero para garantir:
+- **Identidade Visual Gamer:** Design monocromático (Preto e Branco) com efeitos de *Glassmorphism*.
+- **Foco em Conteúdo:** Criado especificamente para destacar os canais de vídeo e redes sociais da Sindrome Games.
+- **Performance Extrema:** Construído com Vanilla JS e CSS puro, sem bibliotecas pesadas.
+- **Experiência Premium:** Micro-interações de hover e foco adaptadas para Desktop e Mobile.
 
 ---
 
-## 🛠️ Tecnologias
-- HTML5
-- CSS3 (Custom Properties & Animations)
-- Vanilla JavaScript
+## 🔗 Redes Oficiais
+Acompanhe os conteúdos da **Sindrome Games**:
+
+* 📺 **YouTube (Longplays):** [@SindromeGames](https://www.youtube.com/@SindromeGames)
+* 🎵 **TikTok:** [@sindromegames](https://tiktok.com/@sindromegames)
+* 📸 **Instagram:** [@sindromegames](https://www.instagram.com/sindromegames)
+* 💜 **Twitch:** [@sindromegames](https://www.twitch.tv/sindromegames)
 
 ---
-*Desenvolvido por Felipe Veçoski como parte do projeto de identidade visual e web do canal.*
+
+## 🛠️ Tecnologias Utilizadas
+- **HTML5** (Estrutura semântica)
+- **CSS3** (Variáveis, Flexbox e Animações)
+- **Vanilla JavaScript** (Interações e manipulação do DOM)
+
+---
+
+## 🚀 Como Visualizar
+1. Clone o repositório.
+2. Certifique-se de que a imagem `logo_sindrome.png` está na pasta raiz.
+3. Abra o `index.html` em qualquer navegador.
+
+---
+*Desenvolvido por Felipe Veçoski. Focado em criar uma experiência profissional para a comunidade gamer.*
