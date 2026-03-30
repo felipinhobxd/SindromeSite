@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sindrome Games — Acesse sua conta</title>
+  <meta name="description" content="Sindrome Games — Portal de autenticação. Faça login ou crie sua conta.">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ═══════════════════════════════════════════
+       BACKGROUND — Camadas de profundidade
+       ═══════════════════════════════════════════ -->
+  <div class="bg-layer" aria-hidden="true" id="bgLayer">
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow--1"></div>
+    <div class="bg-glow bg-glow--2"></div>
+    <div class="bg-glow bg-glow--3"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       APP — Container principal
+       ═══════════════════════════════════════════ -->
+  <main class="app">
+    <div class="card" id="card">
+
+      <!-- HEADER — Brand + Tabs -->
+      <header class="header" id="header">
+        <div class="brand">
+          <h1 class="brand-title">Sindrome Games</h1>
+          <img src="logo_sindrome.png" alt="Sindrome Games" class="brand-logo" draggable="false">
+        </div>
+        <nav class="tabs" role="tablist" aria-label="Tipo de autenticação">
+          <div class="tab-pill" id="pill"></div>
+          <button class="tab --on" role="tab" id="tabLogin" aria-selected="true" data-tab="login">Entrar</button>
+          <button class="tab" role="tab" id="tabRegister" aria-selected="false" data-tab="register">Criar Conta</button>
+        </nav>
+      </header>
+
+      <!-- FORMULÁRIO DINÂMICO (renderizado via JS) -->
+      <div class="form-viewport">
+        <form class="form-area" id="formArea" novalidate autocomplete="on">
+          <!-- Campos injetados dinamicamente por script.js -->
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       OVERLAY DE BOAS-VINDAS
+       ═══════════════════════════════════════════ -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="wc">
+      <div class="wc-icon">
+        <div class="wc-circle">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+      </div>
+      <h2 class="wc-title">Bem-vindo, <span id="wcName">Jogador</span>!</h2>
+      <p class="wc-sub">Preparando sua experiência...</p>
+      <div class="prog">
+        <div class="prog-top">
+          <span>Carregando</span>
+          <span class="prog-pct" id="progPct">0%</span>
+        </div>
+        <div class="prog-bar">
+          <div class="prog-fill" id="progFill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOASTS -->
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
