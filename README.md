@@ -1,20 +1,47 @@
-# 🎮 Sindrome Games - Central de Links
+# Sindrome Games | Social Hub
 
-Este repositório contém o código de uma página de links (estilo **Linktree Premium**) exclusiva para o canal **Sindrome Games**. 
+Página social oficial da **Sindrome Games**, criada como um hub de links rápido, leve e com visual gamer premium. O projeto reúne as principais redes do canal em um layout minimalista, responsivo e elegante.
 
-O objetivo do projeto é reunir em um único lugar, com estética Gamer Minimalista, todos os acessos oficiais para acompanhar os **Longplays** e conteúdos do canal em diferentes plataformas.
+## ✨ Sobre o projeto
 
----
+Este site foi desenvolvido para funcionar como uma página central de links, no estilo Linktree, com foco em:
 
-## ✨ Diferenciais do Projeto
+- visual escuro e sofisticado;
+- carregamento leve e rápido;
+- animações sutis e modernas;
+- experiência boa tanto no desktop quanto no celular.
 
-Ao contrário de agregadores de links comuns, este site foi desenvolvido do zero para garantir:
-- **Identidade Visual Gamer:** Design monocromático (Preto e Branco) com efeitos de *Glassmorphism*.
-- **Foco em Conteúdo:** Criado especificamente para destacar os canais de vídeo e redes sociais da Sindrome Games.
-- **Performance Extrema:** Construído com Vanilla JS e CSS puro, sem bibliotecas pesadas.
-- **Experiência Premium:** Micro-interações de hover e foco adaptadas para Desktop e Mobile.
+## 🚀 Tecnologias utilizadas
 
----
+- **HTML5**
+- **CSS3**
+- **JavaScript Vanilla**
+- **Google Fonts (Inter)**
+
+## 🎨 Destaques do layout
+
+- Logo central com destaque visual
+- Título com identidade da marca **Sindrome Games**
+- Efeito de luz/spotlight seguindo o mouse ou toque
+- Botões com efeito glassmorphism
+- Animação ripple nos cliques
+- Design responsivo para diferentes tamanhos de tela
+
+## 📁 Estrutura do projeto
+
+```bash
+.
+├── index.html
+├── style.css
+├── script.js
+└── logo_sindrome.png
+```
+
+## ▶️ Como usar
+
+1. Baixe ou clone este repositório.
+2. Abra o arquivo `index.html` no navegador.
+3. Para publicar no GitHub Pages, basta enviar os arquivos para o repositório e ativar a hospedagem nas configurações do GitHub Pages.
 
 ## 🔗 Redes Oficiais
 Acompanhe os conteúdos da **Sindrome Games**:
@@ -26,7 +53,12 @@ Acompanhe os conteúdos da **Sindrome Games**:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
-- **HTML5** (Estrutura semântica)
-- **CSS3** (Variáveis, Flexbox e Animações)
-- **Vanilla JavaScript** (Interações e manipulação do DOM)
+## 📌 Observações
+
+- Projeto feito para ser simples, direto e rápido.
+- Ideal para bio, central de links e divulgação de conteúdo.
+- O visual foi pensado para combinar com uma identidade gamer moderna.
+
+## 📝 Licença
+
+Uso livre para fins pessoais e de divulgação do projeto. Se este repositório for compartilhado, manter os créditos da marca **Sindrome Games** é uma boa prática.
