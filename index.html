@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar — SindromeGames</title>
+    <style>
+        /* ═══════════════════════════════════════════════════
+           Reset & Base
+           ═══════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --gray-950: #0a0a0a;
+
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                          Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Fundo Sutil — linhas decorativas
+           ═══════════════════════════════════════════════════ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Container Principal
+           ═══════════════════════════════════════════════════ */
+        .auth-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Logo / Header
+           ═══════════════════════════════════════════════════ */
+        .brand {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--black);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .brand-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .brand h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--black);
+        }
+
+        .brand p {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-top: 0.375rem;
+            font-weight: 400;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Card do Formulário
+           ═══════════════════════════════════════════════════ */
+        .auth-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Painéis (Login / Registro)
+           ═══════════════════════════════════════════════════ */
+        .panel {
+            display: none;
+            animation: panelIn 0.35s ease;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes panelIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .panel-subtitle {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Campos de Input
+           ═══════════════════════════════════════════════════ */
+        .field {
+            margin-bottom: 1.25rem;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            font-family: var(--font-sans);
+            color: var(--black);
+            background: var(--gray-50);
+            border: 1.5px solid var(--gray-200);
+            border-radius: 10px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .field input::placeholder {
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .field input:hover {
+            border-color: var(--gray-300);
+        }
+
+        .field input:focus {
+            border-color: var(--black);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Toggle senha */
+        .toggle-password {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--gray-400);
+            padding: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .toggle-password:hover {
+            color: var(--gray-700);
+        }
+
+        .toggle-password svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Botão Principal
+           ═══════════════════════════════════════════════════ */
+        .btn-primary {
+            width: 100%;
+            padding: 0.8125rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            font-family: var(--font-sans);
+            letter-spacing: 0.01em;
+            color: var(--white);
+            background: var(--black);
+            border: 2px solid var(--black);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-primary:disabled:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Spinner */
+        .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        .btn-primary.loading .spinner {
+            display: block;
+        }
+
+        .btn-primary.loading .btn-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Divider
+           ═══════════════════════════════════════════════════ */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.75rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+
+        .divider span {
+            padding: 0 1rem;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Link de Troca (Login ↔ Registro)
+           ═══════════════════════════════════════════════════ */
+        .switch-panel {
+            text-align: center;
+        }
+
+        .switch-panel p {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+        }
+
+        .switch-panel a {
+            color: var(--black);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1.5px solid var(--gray-300);
+            padding-bottom: 1px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .switch-panel a:hover {
+            border-bottom-color: var(--black);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Toast / Notificações
+           ═══════════════════════════════════════════════════ */
+        .toast-container {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.875rem 1.25rem;
+            border-radius: 10px;
+            font-size: 0.8125rem;
+            font-family: var(--font-sans);
+            font-weight: 400;
+            max-width: 360px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            pointer-events: auto;
+            animation: toastIn 0.3s ease;
+            line-height: 1.4;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .toast.error {
+            background: var(--gray-900);
+            border-left: 3px solid var(--gray-400);
+        }
+
+        .toast.success {
+            background: var(--gray-900);
+            border-left: 3px solid var(--white);
+        }
+
+        .toast.leaving {
+            animation: toastOut 0.25s ease forwards;
+        }
+
+        .toast-icon {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toast-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes toastOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Tela de Redirecionamento
+           ═══════════════════════════════════════════════════ */
+        .redirect-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--white);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .redirect-overlay.visible {
+            display: flex;
+        }
+
+        .redirect-icon {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s ease infinite;
+        }
+
+        .redirect-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--black);
+        }
+
+        .redirect-text {
+            text-align: center;
+        }
+
+        .redirect-text h2 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--black);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.375rem;
+        }
+
+        .redirect-text p {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+        }
+
+        .redirect-bar {
+            width: 200px;
+            height: 3px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .redirect-bar-fill {
+            height: 100%;
+            background: var(--black);
+            border-radius: 4px;
+            width: 0%;
+            animation: barFill 2.5s ease forwards;
+        }
+
+        @keyframes barFill {
+            to { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Footer
+           ═══════════════════════════════════════════════════ */
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            letter-spacing: 0.02em;
+        }
+
+        .footer a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--black);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           Responsivo
+           ═══════════════════════════════════════════════════ */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.5rem 1rem;
+                align-items: flex-start;
+                padding-top: 3rem;
+            }
+
+            .auth-card {
+                padding: 2rem 1.5rem;
+                border-radius: 14px;
+            }
+
+            .brand {
+                margin-bottom: 2rem;
+            }
+
+            .toast-container {
+                top: 1rem;
+                right: 1rem;
+                left: 1rem;
+            }
+
+            .toast {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Redirect Overlay -->
+    <div class="redirect-overlay" id="redirectOverlay">
+        <div class="redirect-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+        <div class="redirect-text">
+            <h2>Bem-vindo de volta</h2>
+            <p>Redirecionando para SindromeGames...</p>
+        </div>
+        <div class="redirect-bar">
+            <div class="redirect-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="auth-wrapper">
+
+        <!-- Brand -->
+        <div class="brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h1>SindromeGames</h1>
+            <p>Acesse sua conta para continuar</p>
+        </div>
+
+        <!-- Auth Card -->
+        <div class="auth-card">
+
+            <!-- ═══ PAINEL LOGIN ═══ -->
+            <div class="panel active" id="loginPanel">
+                <h2 class="panel-title">Entrar</h2>
+                <p class="panel-subtitle">Insira suas credenciais abaixo.</p>
+
+                <form id="loginForm" autocomplete="on">
+                    <div class="field">
+                        <label for="loginUser">Usuário</label>
+                        <input
+                            type="text"
+                            id="loginUser"
+                            name="username"
+                            placeholder="seu_usuario"
+                            autocomplete="username"
+                            spellcheck="false"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="loginPass">Senha</label>
+                        <div class="input-wrapper">
+                            <input
+                                type="password"
+                                id="loginPass"
+                                name="password"
+                                placeholder="••••••••"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button type="button" class="toggle-password" data-target="loginPass" aria-label="Mostrar senha">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="loginBtn">
+                        <span class="btn-text">Entrar</span>
+                        <span class="spinner"></span>
+                    </button>
+                </form>
+
+                <div class="divider"><span>ou</span></div>
+
+                <div class="switch-panel">
+                    <p>Não tem uma conta? <a id="goToRegister">Criar conta</a></p>
+                </div>
+            </div>
+
+            <!-- ═══ PAINEL REGISTRO ═══ -->
+            <div class="panel" id="registerPanel">
+                <h2 class="panel-title">Criar conta</h2>
+                <p class="panel-subtitle">Preencha os dados para se registrar.</p>
+
+                <form id="registerForm" autocomplete="on">
+                    <div class="field">
+                        <label for="regUser">Usuário</label>
+                        <input
+                            type="text"
+                            id="regUser"
+                            name="username"
+                            placeholder="escolha_um_usuario"
+                            autocomplete="username"
+                            spellcheck="false"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="regPass">Senha</label>
+                        <div class="input-wrapper">
+                            <input
+                                type="password"
+                                id="regPass"
+                                name="password"
+                                placeholder="mínimo 6 caracteres"
+                                autocomplete="new-password"
+                                required
+                            >
+                            <button type="button" class="toggle-password" data-target="regPass" aria-label="Mostrar senha">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="regPassConfirm">Confirmar senha</label>
+                        <div class="input-wrapper">
+                            <input
+                                type="password"
+                                id="regPassConfirm"
+                                name="password_confirm"
+                                placeholder="repita a senha"
+                                autocomplete="new-password"
+                                required
+                            >
+                            <button type="button" class="toggle-password" data-target="regPassConfirm" aria-label="Mostrar senha">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="registerBtn">
+                        <span class="btn-text">Criar conta</span>
+                        <span class="spinner"></span>
+                    </button>
+                </form>
+
+                <div class="divider"><span>ou</span></div>
+
+                <div class="switch-panel">
+                    <p>Já tem uma conta? <a id="goToLogin">Entrar</a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <p class="footer">
+            &copy; 2025 <a href="https://www.youtube.com/@SindromeGames" target="_blank">SindromeGames</a>. Todos os direitos reservados.
+        </p>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         JavaScript
+         ═══════════════════════════════════════════════════ -->
+    <script>
+    (() => {
+        'use strict';
+
+        // ─── Config ──────────────────────────────────────
+        const API = window.location.origin + '/api';
+        const REDIRECT_URL = 'https://www.youtube.com/@SindromeGames';
+        const TOKEN_KEY = 'auth_token';
+
+        // ─── DOM ─────────────────────────────────────────
+        const $ = (sel) => document.querySelector(sel);
+        const loginPanel     = $('#loginPanel');
+        const registerPanel  = $('#registerPanel');
+        const loginForm      = $('#loginForm');
+        const registerForm   = $('#registerForm');
+        const loginBtn       = $('#loginBtn');
+        const registerBtn    = $('#registerBtn');
+        const goToRegister   = $('#goToRegister');
+        const goToLogin      = $('#goToLogin');
+        const toastContainer = $('#toastContainer');
+        const redirectOverlay = $('#redirectOverlay');
+
+        // ─── Toast ───────────────────────────────────────
+        function showToast(message, type = 'error') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+
+            const iconSVG = type === 'success'
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>'
+                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+
+            toast.innerHTML = `
+                <span class="toast-icon">${iconSVG}</span>
+                <span>${message}</span>
+            `;
+
+            toastContainer.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('leaving');
+                toast.addEventListener('animationend', () => toast.remove());
+            }, 3500);
+        }
+
+        // ─── Alternar Painéis ────────────────────────────
+        function switchPanel(showPanel, hidePanel) {
+            hidePanel.classList.remove('active');
+            showPanel.classList.add('active');
+        }
+
+        goToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchPanel(registerPanel, loginPanel);
+        });
+
+        goToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchPanel(loginPanel, registerPanel);
+        });
+
+        // ─── Toggle Senha ────────────────────────────────
+        document.querySelectorAll('.toggle-password').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = document.getElementById(btn.dataset.target);
+                const isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+
+                btn.innerHTML = isPassword
+                    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>'
+                    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+            });
+        });
+
+        // ─── Loading State ──────────────────────────────
+        function setLoading(btn, state) {
+            if (state) {
+                btn.classList.add('loading');
+                btn.disabled = true;
+            } else {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+            }
+        }
+
+        // ─── API Request ─────────────────────────────────
+        async function apiRequest(endpoint, body) {
+            const response = await fetch(`${API}${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            const data = await response.json();
+            return { ok: response.ok, status: response.status, data };
+        }
+
+        // ─── Redirect ───────────────────────────────────
+        function redirectToTarget(username) {
+            const h2 = redirectOverlay.querySelector('h2');
+            if (username) {
+                h2.textContent = `Bem-vindo, ${username}`;
+            }
+            redirectOverlay.classList.add('visible');
+
+            setTimeout(() => {
+                window.location.href = REDIRECT_URL;
+            }, 2800);
+        }
+
+        // ─── Login ───────────────────────────────────────
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = $('#loginUser').value.trim();
+            const password = $('#loginPass').value;
+
+            if (!username || !password) {
+                showToast('Preencha todos os campos.');
+                return;
+            }
+
+            setLoading(loginBtn, true);
+
+            try {
+                const { ok, data } = await apiRequest('/login', { username, password });
+
+                if (ok) {
+                    localStorage.setItem(TOKEN_KEY, data.token);
+                    showToast(data.message, 'success');
+                    setTimeout(() => redirectToTarget(data.username), 500);
+                } else {
+                    showToast(data.error || 'Erro ao fazer login.');
+                }
+            } catch (err) {
+                showToast('Não foi possível conectar ao servidor.');
+            } finally {
+                setLoading(loginBtn, false);
+            }
+        });
+
+        // ─── Registro ────────────────────────────────────
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = $('#regUser').value.trim();
+            const password = $('#regPass').value;
+            const confirm  = $('#regPassConfirm').value;
+
+            if (!username || !password || !confirm) {
+                showToast('Preencha todos os campos.');
+                return;
+            }
+
+            if (password !== confirm) {
+                showToast('As senhas não coincidem.');
+                return;
+            }
+
+            if (password.length < 6) {
+                showToast('A senha deve ter pelo menos 6 caracteres.');
+                return;
+            }
+
+            setLoading(registerBtn, true);
+
+            try {
+                const { ok, data } = await apiRequest('/register', { username, password });
+
+                if (ok) {
+                    localStorage.setItem(TOKEN_KEY, data.token);
+                    showToast(data.message, 'success');
+                    setTimeout(() => redirectToTarget(data.username), 500);
+                } else {
+                    showToast(data.error || 'Erro ao criar conta.');
+                }
+            } catch (err) {
+                showToast('Não foi possível conectar ao servidor.');
+            } finally {
+                setLoading(registerBtn, false);
+            }
+        });
+
+        // ─── Verificar Token ao Carregar ─────────────────
+        async function checkExistingSession() {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) return;
+
+            try {
+                const { ok, data } = await apiRequest('/verify', { token });
+
+                if (ok && data.valid) {
+                    redirectToTarget(data.username);
+                } else {
+                    localStorage.removeItem(TOKEN_KEY);
+                }
+            } catch {
+                // Servidor offline — não remove o token
+            }
+        }
+
+        // Inicializar
+        checkExistingSession();
+
+    })();
+    </script>
+
+</body>
+</html>
