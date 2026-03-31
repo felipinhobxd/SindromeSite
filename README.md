@@ -1,5 +1,6 @@
 # ⚠️AVISO⚠️
-# PROJETO 100% FEITO COM IA!!
+# ESSE PROJETO FOI 100% FEITO COM IA!
+## IA usada: claude opus 4.6
 
 # Sindrome Games | Social Hub
 
