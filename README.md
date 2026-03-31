@@ -1,3 +1,6 @@
+# ⚠️AVISO⚠️:
+# PROJETO 100% FEITO COM IA!!
+
 # Sindrome Games | Social Hub
 
 Página social oficial da **Sindrome Games**, criada como um hub de links rápido, leve e com visual gamer premium. O projeto reúne as principais redes do canal em um layout minimalista, responsivo e elegante.
