@@ -1,4 +1,4 @@
-# ⚠️AVISO⚠️:
+# ⚠️AVISO⚠️
 # PROJETO 100% FEITO COM IA!!
 
 # Sindrome Games | Social Hub
