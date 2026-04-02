@@ -2,6 +2,8 @@
 # ⚠️ ESSE PROJETO FOI 100% FEITO COM IA! ⚠️
 ## 🧠 IA usada: claude opus 4.6 
 
+https://felipinhobxd.github.io/SindromeSite/
+
 # Sindrome Games | Social Hub
 
 Página social oficial da **Sindrome Games**, criada como um hub de links rápido, leve e com visual gamer premium. O projeto reúne as principais redes do canal em um layout minimalista, responsivo e elegante.
