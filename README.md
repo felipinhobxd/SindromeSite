@@ -1,7 +1,3 @@
-# ⚠️ AVISO ⚠️
-# ⚠️ ESSE PROJETO FOI 100% FEITO COM IA! ⚠️
-## 🧠 IA usada: claude opus 4.6 
-
 # SITE: https://felipinhobxd.github.io/SindromeSite/
 
 # Sindrome Games | Social Hub
