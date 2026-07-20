@@ -1,66 +1,48 @@
-# SITE: https://felipinhobxd.github.io/SindromeSite/
+# Sindrome Games - Linktree Premium
 
-# Sindrome Games | Social Hub
+Este é um site de links (estilo Linktree) ultra-moderno, profissional e otimizado, criado especialmente para o canal **Sindrome Games**. O projeto foi desenvolvido com foco em performance, design gamer e interatividade.
 
-Página social oficial da **Sindrome Games**, criada como um hub de links rápido, leve e com visual gamer premium. O projeto reúne as principais redes do canal em um layout minimalista, responsivo e elegante.
+## 🚀 Funcionalidades
 
-## ✨ Sobre o projeto
+- **Design Premium**: Interface baseada em glassmorphism com tema escuro.
+- **Partículas Interativas**: Fundo animado em Canvas que reage ao mouse e toque.
+- **Animações Fluidas**: Microinterações, efeitos de hover, entrada suave e ripple effect.
+- **PWA Ready**: Manifest.json incluso para instalação como aplicativo.
+- **SEO Otimizado**: Meta tags completas, Open Graph, Twitter Cards, robots.txt e sitemap.xml.
+- **Web Share API**: Botão nativo de compartilhamento.
+- **Performance**: 60 FPS estável, sem frameworks pesados, apenas HTML/CSS/JS puro.
 
-Este site foi desenvolvido para funcionar como uma página central de links, no estilo Linktree, com foco em:
+## 🛠️ Como Personalizar
 
-- visual escuro e sofisticado;
-- carregamento leve e rápido;
-- animações sutis e modernas;
-- experiência boa tanto no desktop quanto no celular.
+### 1. Alterar Foto de Perfil
+Substitua o arquivo em `assets/img/avatar.png` por sua nova imagem (mantenha o nome ou atualize no `index.html`).
 
-## 🚀 Tecnologias utilizadas
-
-- **HTML5**
-- **CSS3**
-- **JavaScript Vanilla**
-- **Google Fonts (Inter)**
-
-## 🎨 Destaques do layout
-
-- Logo central com destaque visual
-- Título com identidade da marca **Sindrome Games**
-- Efeito de luz/spotlight seguindo o mouse ou toque
-- Botões com efeito glassmorphism
-- Animação ripple nos cliques
-- Design responsivo para diferentes tamanhos de tela
-
-## 📁 Estrutura do projeto
-
-```bash
-.
-├── index.html
-├── style.css
-├── script.js
-└── logo_sindrome.png
+### 2. Alterar Nome e Bio
+No arquivo `index.html`, localize as linhas:
+```html
+<h1 class="profile-name">Sindrome Games</h1>
+<p class="profile-bio">Explorando o universo dos games com humor e gameplay.</p>
 ```
 
-## ▶️ Como usar
+### 3. Adicionar/Remover Links
+No `index.html`, dentro da `<main class="links-container">`, você pode duplicar ou remover os blocos `<a class="link-card">`. 
+Para mudar o ícone, altere o atributo `data-lucide` (veja opções em [lucide.dev](https://lucide.dev)).
 
-1. Baixe ou clone este repositório.
-2. Abra o arquivo `index.html` no navegador.
-3. Para publicar no GitHub Pages, basta enviar os arquivos para o repositório e ativar a hospedagem nas configurações do GitHub Pages.
+### 4. Alterar Cores
+No arquivo `assets/css/style.css`, altere as variáveis no `:root`:
+```css
+--accent-color: #6366f1; /* Cor principal dos ícones e botões */
+--bg-color: #050505;     /* Cor de fundo */
+```
 
-## 🔗 Redes Oficiais
-Acompanhe os conteúdos da **Sindrome Games**:
+## 📦 Hospedagem no GitHub Pages
 
-* 📺 **YouTube (Longplays):** [@SindromeGames](https://www.youtube.com/@SindromeGames)
-* 🎵 **TikTok:** [@sindromegames](https://tiktok.com/@sindromegames)
-* 📸 **Instagram:** [@sindromegames](https://www.instagram.com/sindromegames)
-* 💜 **Twitch:** [@sindromegames](https://www.twitch.tv/sindromegames)
+1. Crie um novo repositório no GitHub.
+2. Faça o upload de todos os arquivos desta pasta.
+3. Vá em **Settings** > **Pages**.
+4. Em **Branch**, selecione `main` (ou `master`) e a pasta `/(root)`.
+5. Clique em **Save**. Seu site estará no ar em instantes!
 
 ---
 
-## 📌 Observações
-
-- Projeto feito para ser simples, direto e rápido.
-- Ideal para bio, central de links e divulgação de conteúdo.
-- O visual foi pensado para combinar com uma identidade gamer moderna.
-
-## 📝 Licença
-
-Uso livre para fins pessoais e de divulgação do projeto. Se este repositório for compartilhado, manter os créditos da marca **Sindrome Games** é uma boa prática.
+Desenvolvido com foco em excelência para **Sindrome Games**.
